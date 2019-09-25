@@ -1,0 +1,66 @@
+syntax = "proto3";
+package rocks.mango.proto.api;
+import "proto-types/base.proto";
+import "proto-policy/entity.proto";
+
+option java_multiple_files = true;
+
+option java_package = "rocks.mango.api.policy";
+
+message PCreatePolicy {
+    string policy_id = 1;
+    string address = 2;
+}
+
+message PAssignPolicy {
+    string policy_id = 1;
+    string user_id = 2;
+}
+
+message PUpdateLimits {
+    string policy_id = 1;
+    map<string, PLimit> limits = 2;
+}
+
+message PRenewPolicy {
+    string policy_id = 1;
+    string payment_id = 2;
+}
+
+enum PPolicyEventType {
+    UNDEFINED = 0;
+    CREATED = 1;
+    ASSIGNED = 2;
+    LIMITS_UPDATED = 3;
+    RENEWED = 4;
+}
+
+message PPolicyCommand {
+    string id = 1;
+    oneof payload {
+        PCreatePolicy create_policy = 11;
+        PAssignPolicy assign_policy = 12;
+        PUpdateLimits update_limits = 13;
+        PRenewPolicy renew_policy = 14;
+    }
+}
+
+message PPolicyEvent {
+    string command_id = 1;
+    string error_code = 2;
+    string error_message = 3;
+    PPolicyEventType event_type = 4;
+    PPolicy policy = 5;
+}
+
+message PPolicyNumber {
+    // id запроса по которому сгенерирован номер
+    string request_id = 1;
+    // номер полиса
+    string number = 2;
+}
+
+message PGeneratePolicyNumbers {
+    string request_id = 1;
+    int32 quantityNumbers = 2;
+}

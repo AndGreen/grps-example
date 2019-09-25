@@ -1,0 +1,18 @@
+syntax = "proto3";
+package rocks.mango.proto;
+option java_multiple_files = true;
+option java_package = "rocks.mango.api";
+
+message PCurrency {
+    string name = 1;
+}
+
+message PAmount {
+    int64 amount = 1;
+    PCurrency currency = 2;
+}
+
+message PTimestamp {
+    int64 seconds = 1;
+    int32 nanos = 2;
+}

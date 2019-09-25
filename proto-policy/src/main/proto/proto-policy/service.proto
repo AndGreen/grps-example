@@ -1,0 +1,57 @@
+syntax = "proto3";
+package rocks.mango.proto.api;
+import "proto-policy/entity.proto";
+
+option java_multiple_files = true;
+
+option java_package = "rocks.mango.api.policy";
+
+service PolicyService {
+    rpc createPolicy (PCreatePolicyRequest) returns (PCreatePolicyResponse);
+    rpc updateLimits (PUpdateLimitsRequest) returns (PUpdateLimitsResponse);
+    rpc assignPolicy (PAssignPolicyRequest) returns (PAssignPolicyResponse);
+    rpc getPolicyStream (PGetPolicyRequest) returns (stream PGetPolicyResponse);
+}
+
+message PCreatePolicyRequest {
+    string request_id = 1;
+    string address = 2;
+}
+
+message PCreatePolicyResponse {
+    string request_id = 1;
+    string policy_id = 2;
+}
+
+message PUpdateLimitsRequest {
+    string request_id = 1;
+    string policy_id = 2;
+    map<string, PLimit> limits = 3;
+}
+
+message PUpdateLimitsResponse {
+    string request_id = 1;
+}
+
+message PAssignPolicyRequest {
+    string request_id = 1;
+    string policy_id = 2;
+    string user_id = 3;
+}
+
+message PAssignPolicyResponse {
+    string request_id = 1;
+}
+
+message PGetPolicyRequest {
+    string request_id = 1;
+    oneof filter {
+        string policy_id = 11;
+        string user_id = 12;
+    }
+}
+
+message PGetPolicyResponse {
+    string request_id = 1;
+    PPolicyAppView policy = 2;
+}

@@ -1,0 +1,27 @@
+format_version: 5
+environments:
+  Building:
+    pipelines:
+      - Libs_PolicyService
+pipelines:
+  Libs_PolicyService:
+    group: PolicyService
+    display_order: 10
+    label_template: ${code[:10]}
+    materials:
+      code:
+        type: configrepo
+        destination: code
+    stages:
+      - up_version:
+          elastic_profile_id: "maven.build-protobuf"
+          tasks:
+            - script: |
+                export CODE_PATH=$(pwd)/code
+                /scripts/update-source-version
+      - publish:
+          elastic_profile_id: "maven.build-protobuf"
+          tasks:
+            - script: |
+                export CODE_PATH=$(pwd)/code
+                /scripts/deploy-maven

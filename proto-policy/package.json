@@ -1,0 +1,41 @@
+{
+  "_from": "@radio/proto-policy@0.42.3",
+  "_id": "@radio/proto-policy@0.42.3",
+  "_inBundle": false,
+  "_integrity": "sha512-2J2EMTcIp15RtqPgXdXyO5jgtnrQeWvaLlKRJePYbeOtLHMeiiG8mHYpNf1yc7tE5vvcGXpELqep3Uc5H8jQdw==",
+  "_location": "/@radio/proto-policy",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@radio/proto-policy@0.42.3",
+    "name": "@radio/proto-policy",
+    "escapedName": "@radio%2fproto-policy",
+    "scope": "@radio",
+    "rawSpec": "0.42.3",
+    "saveSpec": null,
+    "fetchSpec": "0.42.3"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "http://nexus.service.consul/repository/npm-group/@radio/proto-policy/-/proto-policy-0.42.3.tgz",
+  "_shasum": "3e5d37b7056c4e13959a5f9a5213bf46085e38b4",
+  "_spec": "@radio/proto-policy@0.42.3",
+  "_where": "/Users/andrew/projects/customer-account-front",
+  "author": "",
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Generated js from proto",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "@radio/proto-policy",
+  "publishConfig": {
+    "registry": "http://nexus.service.consul/repository/private-npm/"
+  },
+  "scripts": {
+    "prepack": "cp -rf ./target/js/**/*.js .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.42.3"
+}

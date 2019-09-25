@@ -1,0 +1,6 @@
+
+export const POLICY_CREATE = 'POLICY_CREATE';
+export const POLICY_GET = 'POLICY_GET';
+export const POLICY_UPDATE = 'POLICY_UPDATE';
+export const POLICY_UPDATE_LIMIT = 'POLICY_UPDATE_LIMIT';
+export const POLICY_ASSIGN = 'POLICY_ASSIGN';
